@@ -1,0 +1,63 @@
+.login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2{
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: calc(100% - 22px); /* Adjusted width to account for padding and borders */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  .additional-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Increased margin for better separation */
+  }
+  
+  .register-link a,
+  .forgot-password-link a {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none; /* Remove default underline */
+  }
+  
+  .register-link a:hover,
+  .forgot-password-link a:hover {
+    text-decoration: underline; /* Underline links on hover */
+  }
