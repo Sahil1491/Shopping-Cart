@@ -61,3 +61,17 @@
   .forgot-password-link a:hover {
     text-decoration: underline; /* Underline links on hover */
   }
+
+  /* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .login-container {
+    max-width: 90%; /* Adjusted to 90% of the viewport */
+    margin: 20px auto; /* Reduced margin for smaller screens */
+  }
+
+  .additional-options {
+    flex-direction: row; /* Change back to row for larger screens */
+    justify-content: space-between;
+    margin-top: 10px; /* Reduced margin for smaller screens */
+  }
+}
