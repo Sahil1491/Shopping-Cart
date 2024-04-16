@@ -38,7 +38,7 @@ function Header({ cartCount }: { cartCount: number }) {
             {showCategoryMenu && (
               <div className="dropdown-content">
                 <Link to="/Fashion" onClick={closeMenus}>Fashion</Link>
-                <Link to="/category/beauty-products" onClick={closeMenus}>Beauty Products</Link>
+                <Link to="/beauty-Producs" onClick={closeMenus}>Beauty Products</Link>
                 <Link to="/electronics" onClick={closeMenus}>Electronics</Link>
               </div>
             )}

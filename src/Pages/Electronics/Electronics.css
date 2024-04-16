@@ -1,10 +1,10 @@
-/* Styles for the electronics container */
+
 .electronicsContainer {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap; /* Allow boxes to wrap to next line */
+  flex-wrap: wrap; 
   margin-top: 20px;
-  width: 100%; /* Ensure full width */
+  width: 100%; 
 }
 
 /* Styles for electronics boxes */

@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Fashion from './Pages/Fashion/Fashion';
 import Electronics from './Pages/Electronics/Electronics';
 import Constact from './Pages/Contact/Contact';
+import BeautyProduct from './Pages/BeautyProducts/BeautyProduct';
 
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Fashion" element={<Fashion/>}/>
           <Route path='/electronics' element={<Electronics/>} />
           <Route path='/Contact' element={<Constact/>} />
+          <Route path='/beauty-Producs' element={<BeautyProduct/>} />
          
        
         </Routes>
