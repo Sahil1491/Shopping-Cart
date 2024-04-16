@@ -1,4 +1,4 @@
-import './Contact.css'
+import './AboutUs.css'
 import Footer from '../../Components/Footer/Footer';
 import sideImg1 from '../../Components/Assests/SideImg1.webp';
 import sideImg2 from '../../Components/Assests/SideImg2.webp';

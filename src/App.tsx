@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Fashion from './Pages/Fashion/Fashion';
 import Electronics from './Pages/Electronics/Electronics';
-import Constact from './Pages/Contact/Contact';
+import Constact from './Pages/AboutUs/AboutUs';
 import BeautyProduct from './Pages/BeautyProducts/BeautyProduct';
 
 
