@@ -9,6 +9,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Fashion from './Pages/Fashion/Fashion';
 import Electronics from './Pages/Electronics/Electronics';
+import Constact from './Pages/Contact/Contact';
+
 
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/Fashion" element={<Fashion/>}/>
           <Route path='/electronics' element={<Electronics/>} />
+          <Route path='/Contact' element={<Constact/>} />
+         
        
         </Routes>
         <ToastContainer/>

@@ -44,7 +44,7 @@ function Header({ cartCount }: { cartCount: number }) {
             )}
           </div>
         </li>
-        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/Contact">About-Us</Link></li>
         <li><Link to="/">Login</Link></li>
         <li><Link to="/cart"><FontAwesomeIcon icon={faCartShopping} /> {cartCount}</Link></li>
         <li>

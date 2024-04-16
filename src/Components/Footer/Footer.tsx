@@ -1,20 +1,27 @@
 import React from 'react';
 import './Footer.css';
+import { faInstagram, faLinkedin, faSquareGithub, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Footer = () => {
   return (
     <footer>
-      <div className='info'>
-        <h4>123 Plot, Chandigarh</h4>
-        <h3>Near Khrar</h3>
+      <div className='Logos'>
+        <a href="https://www.instagram.com/Sahil_Thakur_9067" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faInstagram} className='icon' />
+        </a>
+        <a href="https://www.youtube.com/@hpadventures3533" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faYoutubeSquare} className='icon' />
+        </a>
+        <a href="https://in.linkedin.com/in/sahil-bharti-90022a271" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faLinkedin} className='icon' />
+        </a>
+        <a href="https://github.com/Sahil1491" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faSquareGithub} className='icon' />
+        </a>
       </div>
-      <div className='contact'>
-        <h4>Contact number: xxxxxxx</h4>
-        <h3>Gmail: xxxx@gmail.com</h3>
-        <h3>About us</h3>
-      </div>
-      <div className='copyright'>
-        <p>© 2024 Shopping Cart</p>
+      <div className='Footer'>
+        <p>© 2024, Shpping-Cart, Inc. or its affiliates</p>
       </div>
     </footer>
   );

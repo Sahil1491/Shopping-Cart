@@ -1,0 +1,29 @@
+.outerImgContainer{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 400px;
+    margin-top: 0;
+  background-color: #ccc;
+}
+
+.Imgcontainer{
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    background-image: url(../../Components/Assests/ProfilePik1.jpg);
+    background-size: cover;
+    background-color: aquamarine;
+}
+
+h1{
+   text-align: center;
+   text-decoration: underline;
+}
+.lowerPart p {
+    text-decoration: none; 
+    margin: 4px;
+    text-align: center;
+  }
+
+  
