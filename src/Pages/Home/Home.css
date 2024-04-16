@@ -89,58 +89,5 @@ body {
   background-color: #45a049;
 }
 
-/* Image with content styles */
-.ImageWithContent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-  
-}
-
-.ImageContainer {
-  flex: 1;
-  margin-right: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for image */
-  padding: 10px; /* Add padding for spacing */
-}
-
-.ImageContainer img {
-  max-width: 100%;
-  height: auto;
-}
-
-.ContentContainer {
-  flex: 1;
-  padding: 20px;
-  background-color: #ccc;
-  display: flex; /* Use flexbox to control content alignment */
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  text-align: center; /* Center text within the container */
-}
-
-.ContentContainer p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #333;
-  max-width: 100%; /* Ensure text doesn't overflow */
-}
-
-/* Reverse the order for the second ImageWithContent */
-.ImageWithContent:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-/* Adjust margins for the reversed layout */
-.ImageWithContent:nth-child(even) .ImageContainer {
-  margin-right: 0;
-  margin-left: 20px;
-}
-
-/* Style for sideImg2 box shadow */
-.ImageWithContent img:nth-child(2) {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow for sideImg2 */
-}
 
 
