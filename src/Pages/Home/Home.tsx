@@ -12,10 +12,10 @@ import Slide2 from '../../Components/Assests/Slide2.jpeg';
 import Slide4 from '../../Components/Assests/this-is-same-shoes_329181-1769.avif';
 import Footer from '../../Components/Footer/Footer';
 
-
 interface ProductItem {
   name: string;
   price: number;
+  image: string;
 }
 
 function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAction<number>> }) {
@@ -31,19 +31,24 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
     return () => clearInterval(interval);
   }, [images.length]);
 
-  const addToCart = (productName: string, price: number) => {
+  const addToCart = (productName: string, price: number, image: string) => {
     setCartCount((prevCount) => prevCount + 1);
-    setCartItems((prevItems) => [...prevItems, { name: productName, price }]);
-    toast.success(`${productName} added to cart`, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    setCartItems((prevItems) => [...prevItems, { name: productName, price, image }]);
+    saveItemsToLocalStorage([...cartItems, { name: productName, price, image }]);
+   
+ 
   };
+
+  const saveItemsToLocalStorage = (items: ProductItem[]) => {
+    localStorage.setItem('cartItems', JSON.stringify(items));
+  };
+
+  useEffect(() => {
+    const storedItems = localStorage.getItem('cartItems');
+    if (storedItems) {
+      setCartItems(JSON.parse(storedItems));
+    }
+  }, []);
 
   return (
     <>
@@ -58,7 +63,7 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
           <div className="ProductDetails">
             <h3>Iphone 13/258gb</h3>
             <h4>Price: 70,000</h4>
-            <button className="AddToCartButton" onClick={() => addToCart('Iphone 13', 70000)}>Add to Cart</button>
+            <button className="AddToCartButton" onClick={() => addToCart('Iphone 13', 70000, Iphone13)}>Add to Cart</button>
           </div>
         </div>
 
@@ -67,7 +72,7 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
           <div className="ProductDetails">
             <h3>Macbook Air/512Gb</h3>
             <h4>Price: $200</h4>
-            <button className="AddToCartButton" onClick={() => addToCart('Macbook Air', 200)}>Add to Cart</button>
+            <button className="AddToCartButton" onClick={() => addToCart('Macbook Air', 200, MacbookAir)}>Add to Cart</button>
           </div>
         </div>
 
@@ -76,7 +81,7 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
           <div className="ProductDetails">
             <h3>Iphone 15 Pro/256gb</h3>
             <h4>Price: 150</h4>
-            <button className="AddToCartButton" onClick={() => addToCart('Iphone 15 Pro', 150)}>Add to Cart</button>
+            <button className="AddToCartButton" onClick={() => addToCart('Iphone 15 Pro', 150, Iphone15pro)}>Add to Cart</button>
           </div>
         </div>
 
@@ -85,11 +90,21 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
           <div className="ProductDetails">
             <h3>Samsung S22 Ultra</h3>
             <h4>Price: $100</h4>
-            <button className="AddToCartButton" onClick={() => addToCart('Samsung S22 Ultra', 100)}>Add to Cart</button>
+            <button className="AddToCartButton" onClick={() => addToCart('Samsung S22 Ultra', 100, S22Ultra)}>Add to Cart</button>
           </div>
         </div>
       </div>
       <Footer />
+      <div className="CartItems">
+        <h2>Cart Items</h2>
+        <ul>
+          {cartItems.map((item, index) => (
+            <li key={index}>
+              {item.name} - {item.price} - <img src={item.image} alt={item.name} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

@@ -47,7 +47,7 @@ body {
   background-color: #fff;
   text-align: left;
   height: 350px;
-  width: 200px; /* Adjust width */
+  width: 200px; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
