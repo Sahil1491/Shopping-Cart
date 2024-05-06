@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import './Cart.css';
-import DeleteIcon from '@mui/icons-material/Delete'; // Import DeleteIcon from Material-UI
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface CartItem {
   name: string;
@@ -29,50 +30,48 @@ const Cart = () => {
   const handleRemoveItem = (indexToRemove: number) => {
     const updatedCartItems = cartItems.filter((_, index) => index !== indexToRemove);
     setCartItems(updatedCartItems);
-    // Update localStorage if needed
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
   return (
-    <div className="cart-container">
-      {/* Cart items box */}
+    <Container className="cart-container">
       <div className={`cart-box ${cartItems.length === 0 ? 'empty' : ''}`}>
         <h2>Cart Items</h2>
-        <div className="cart-items">
-          {/* Conditionally render cart items or "Cart is empty" message */}
+        <Row>
           {cartItems.length > 0 ? (
             cartItems.map((item, index) => (
-              <div key={index} className="cart-item">
-                {/* Product Image */}
-                <div className="product-image-container">
-                  <img src={item.image} alt={item.name} />
+              <Col key={index} sm={12} md={6} lg={4} xl={3}>
+                <div className="cart-item">
+                  {/* Product Image */}
+                  <div className="product-image-container">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  {/* Product Info */}
+                  <div className="product-info">
+                    <div className="product-header">Product Info</div>
+                    <p>{item.name}</p>
+                    <p>Price: ${item.price}</p>
+                    {/* Delete Icon */}
+                    <DeleteIcon
+                      data-testid={`DeleteIcon-${index}`}
+                      onClick={() => handleRemoveItem(index)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  </div>
                 </div>
-                {/* Product Info */}
-                <div className="item-info">
-                  <div className="product-header">Product Info</div>
-                  <p>{item.name}</p>
-                  <p>Price: ${item.price}</p>
-                </div>
-                {/* Delete Icon */}
-                <DeleteIcon
-                  data-testid={`DeleteIcon-${index}`} // Unique test id for testing purposes
-                  onClick={() => handleRemoveItem(index)} // Call handleRemoveItem with index on click
-                  style={{ cursor: 'pointer', marginLeft: 'auto' }} // Add cursor and margin for styling
-                />
-              </div>
+              </Col>
             ))
           ) : (
             <p>Cart is empty</p>
           )}
-        </div>
-        {/* Conditionally render subtotal if cart is not empty */}
+        </Row>
         {cartItems.length > 0 && (
           <div className="subtotal-container">
             <h3>Subtotal: ${subtotal}</h3>
           </div>
         )}
       </div>
-    </div>
+    </Container>
   );
 };
 
