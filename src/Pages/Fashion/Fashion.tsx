@@ -12,26 +12,47 @@ import watch2 from '../../Components/Assests/watch3.jpeg';
 import watch3 from '../../Components/Assests/watch3.webp';
 import Footer from '../../Components/Footer/Footer';
 
-export default function Fashion() {
+interface ProductItem {
+  name: string;
+  price: number;
+  image: string;
+}
+
+export default function Fashion({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAction<number>> }) {
   const [slideImg, setSlideImg] = useState(1);
+  const [cartItems, setCartItems] = useState<ProductItem[]>([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideImg((prevSlide) => (prevSlide % 4) + 1); // Cycle through slides 1 to 4
-    }, 3000); // 3 seconds interval
+    }, 3000);
 
     return () => clearInterval(interval); // Cleanup the interval on component unmount
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+  }, []);
+
+  useEffect(() => {
+    const storedItems = localStorage.getItem('cartItems');
+    if (storedItems) {
+      setCartItems(JSON.parse(storedItems));
+    }
+  }, []);
+
+  const addToCart = (productName: string, price: number, image: string) => {
+    const newCartItem = { name: productName, price, image };
+    const updatedCartItems = [...cartItems, newCartItem];
+    setCartItems(updatedCartItems);
+    setCartCount((prevCount) => prevCount + 1);
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+  };
 
   return (
     <>
       <div className="fullscreen-container">
         <div className="fullscreen-image">
-          {/* Use slideImg variable to dynamically change the image */}
-          {slideImg === 1 && <img src={slideImg1} alt="" />}
-          {slideImg === 2 && <img src={slideImg2} alt="" />}
-          {slideImg === 3 && <img src={slideImg3} alt="" />}
-          {slideImg === 4 && <img src={slideImg4} alt="" />}
+          {slideImg === 1 && <img src={slideImg1} alt="Slide 1" />}
+          {slideImg === 2 && <img src={slideImg2} alt="Slide 2" />}
+          {slideImg === 3 && <img src={slideImg3} alt="Slide 3" />}
+          {slideImg === 4 && <img src={slideImg4} alt="Slide 4" />}
         </div>
       </div>
 
@@ -40,21 +61,21 @@ export default function Fashion() {
           <img src={tshirt1} alt="Tshirt 1" className="tshirtImage" />
           <div className="productName">Tshirt 1</div>
           <div className="productPrice">$25</div>
-          <button className="addToCartButton">Add to Cart</button>
+          <button className="addToCartButton" onClick={() => addToCart('Tshirt 1', 25, tshirt1)}>Add to Cart</button>
         </div>
 
         <div className="tshirtBox">
           <img src={tshirt2} alt="Tshirt 2" className="tshirtImage" />
           <div className="productName">Tshirt 2</div>
           <div className="productPrice">$30</div>
-          <button className="addToCartButton">Add to Cart</button>
+          <button className="addToCartButton" onClick={() => addToCart('Tshirt 2', 30, tshirt2)}>Add to Cart</button>
         </div>
 
         <div className="tshirtBox">
           <img src={tshirt3} alt="Tshirt 3" className="tshirtImage" />
           <div className="productName">Tshirt 3</div>
           <div className="productPrice">$20</div>
-          <button className="addToCartButton">Add to Cart</button>
+          <button className="addToCartButton" onClick={() => addToCart('Tshirt 3', 20, tshirt3)}>Add to Cart</button>
         </div>
       </div>
 
@@ -63,21 +84,21 @@ export default function Fashion() {
           <img src={watch1} alt="Watch 1" className="watchImage" />
           <div className="productName">Watch 1</div>
           <div className="productPrice">$100</div>
-          <button className="addToCartButton">Add to Cart</button>
+          <button className="addToCartButton" onClick={() => addToCart('Watch 1', 100, watch1)}>Add to Cart</button>
         </div>
 
         <div className="watchBox">
           <img src={watch2} alt="Watch 2" className="watchImage" />
           <div className="productName">Watch 2</div>
           <div className="productPrice">$150</div>
-          <button className="addToCartButton">Add to Cart</button>
+          <button className="addToCartButton" onClick={() => addToCart('Watch 2', 150, watch2)}>Add to Cart</button>
         </div>
 
         <div className="watchBox">
           <img src={watch3} alt="Watch 3" className="watchImage" />
           <div className="productName">Watch 3</div>
           <div className="productPrice">$120</div>
-          <button className="addToCartButton">Add to Cart</button>
+          <button className="addToCartButton" onClick={() => addToCart('Watch 3', 120, watch3)}>Add to Cart</button>
         </div>
       </div>
       <Footer/>

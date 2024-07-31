@@ -31,6 +31,8 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
     return () => clearInterval(interval);
   }, [images.length]);
 
+  
+
   const addToCart = (productName: string, price: number, image: string) => {
     setCartCount((prevCount) => prevCount + 1);
     setCartItems((prevItems) => [...prevItems, { name: productName, price, image }]);
@@ -49,6 +51,8 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
       setCartItems(JSON.parse(storedItems));
     }
   }, []);
+
+
 
   return (
     <>
@@ -95,16 +99,7 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
         </div>
       </div>
       <Footer />
-      <div className="CartItems">
-        <h2>Cart Items</h2>
-        <ul>
-          {cartItems.map((item, index) => (
-            <li key={index}>
-              {item.name} - {item.price} - <img src={item.image} alt={item.name} />
-            </li>
-          ))}
-        </ul>
-      </div>
+    
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faEllipsisV, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';

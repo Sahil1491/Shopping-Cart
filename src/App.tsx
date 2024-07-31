@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
@@ -26,10 +26,10 @@ function App() {
           <Route path="/home" element={<Home setCartCount={setCartCount}  />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/Fashion" element={<Fashion/>}/>
-          <Route path='/electronics' element={<Electronics/>} />
+          <Route path="/Fashion" element={<Fashion setCartCount={setCartCount}/>}/>
+          <Route path='/electronics' element={<Electronics setCartCount={setCartCount}/>} />
           <Route path='/Contact' element={<Constact/>} />
-          <Route path='/beauty-Producs' element={<BeautyProduct/>} />
+          <Route path='/beauty-Producs' element={<BeautyProduct setCartCount={setCartCount}/>} />
          
        
         </Routes>
