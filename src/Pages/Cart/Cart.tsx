@@ -9,12 +9,11 @@ interface CartItem {
   image: string;
 }
 
-const Cart = () => {
+const Cart = ({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAction<number>> }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [subtotal, setSubtotal] = useState<number>(0);
 
   useEffect(() => {
-    // Retrieve cart items from local storage on initial render
     const storedItems = localStorage.getItem('cartItems');
     if (storedItems) {
       setCartItems(JSON.parse(storedItems));
@@ -22,7 +21,6 @@ const Cart = () => {
   }, []);
 
   useEffect(() => {
-    // Calculate subtotal whenever cart items change
     const calculatedSubtotal = cartItems.reduce((total, item) => total + item.price, 0);
     setSubtotal(calculatedSubtotal);
   }, [cartItems]);
@@ -31,6 +29,7 @@ const Cart = () => {
     const updatedCartItems = cartItems.filter((_, index) => index !== indexToRemove);
     setCartItems(updatedCartItems);
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    setCartCount(updatedCartItems.length); // Update cart count
   };
 
   return (
@@ -42,16 +41,13 @@ const Cart = () => {
             cartItems.map((item, index) => (
               <Col key={index} sm={12} md={6} lg={4} xl={3}>
                 <div className="cart-item">
-                  {/* Product Image */}
                   <div className="product-image-container">
                     <img src={item.image} alt={item.name} />
                   </div>
-                  {/* Product Info */}
                   <div className="product-info">
                     <div className="product-header">Product Info</div>
                     <p>{item.name}</p>
                     <p>Price: ${item.price}</p>
-                    {/* Delete Icon */}
                     <DeleteIcon
                       data-testid={`DeleteIcon-${index}`}
                       onClick={() => handleRemoveItem(index)}

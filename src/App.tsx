@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
@@ -12,28 +12,24 @@ import Electronics from './Pages/Electronics/Electronics';
 import Constact from './Pages/AboutUs/AboutUs';
 import BeautyProduct from './Pages/BeautyProducts/BeautyProduct';
 
-
-
 function App() {
   const [cartCount, setCartCount] = useState(0);
 
   return (
     <Router>
       <>
-        <Header cartCount={cartCount}/>
+        <Header cartCount={cartCount} />
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home setCartCount={setCartCount}  />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/home" element={<Home setCartCount={setCartCount} />} />
+          <Route path="/cart" element={<Cart setCartCount={setCartCount} />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/Fashion" element={<Fashion setCartCount={setCartCount}/>}/>
-          <Route path='/electronics' element={<Electronics setCartCount={setCartCount}/>} />
-          <Route path='/Contact' element={<Constact/>} />
-          <Route path='/beauty-Producs' element={<BeautyProduct setCartCount={setCartCount}/>} />
-         
-       
+          <Route path="/Fashion" element={<Fashion setCartCount={setCartCount} />} />
+          <Route path="/electronics" element={<Electronics setCartCount={setCartCount} />} />
+          <Route path='/Contact' element={<Constact />} />
+          <Route path='/beauty-Producs' element={<BeautyProduct setCartCount={setCartCount} />} />
         </Routes>
-        <ToastContainer/>
+        <ToastContainer />
       </>
     </Router>
   );
