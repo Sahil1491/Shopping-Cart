@@ -9,7 +9,11 @@ interface CartItem {
   image: string;
 }
 
-const Cart = ({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAction<number>> }) => {
+interface CartProps {
+  setCartCount: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Cart: React.FC<CartProps> = ({ setCartCount }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [subtotal, setSubtotal] = useState<number>(0);
 

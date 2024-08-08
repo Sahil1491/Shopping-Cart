@@ -1,10 +1,14 @@
-import  { useState } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faEllipsisV, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-function Header({ cartCount }: { cartCount: number }) {
+interface HeaderProps {
+  cartCount: number;
+}
+
+const Header: React.FC<HeaderProps> = ({ cartCount }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showCategoryMenu, setShowCategoryMenu] = useState(false);
 
@@ -38,7 +42,7 @@ function Header({ cartCount }: { cartCount: number }) {
             {showCategoryMenu && (
               <div className="dropdown-content">
                 <Link to="/Fashion" onClick={closeMenus}>Fashion</Link>
-                <Link to="/beauty-Producs" onClick={closeMenus}>Beauty Products</Link>
+                <Link to="/beauty-Products" onClick={closeMenus}>Beauty Products</Link>
                 <Link to="/electronics" onClick={closeMenus}>Electronics</Link>
               </div>
             )}
@@ -64,6 +68,6 @@ function Header({ cartCount }: { cartCount: number }) {
       </ul>
     </nav>
   );
-}
+};
 
 export default Header;

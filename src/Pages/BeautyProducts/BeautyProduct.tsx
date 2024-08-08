@@ -16,8 +16,12 @@ interface ProductItem {
   image: string;
 }
 
-export default function BeautyProduct({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAction<number>> }) {
-  const [slideImg, setSlideImg] = useState(1);
+interface BeautyProductProps {
+  setCartCount: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const BeautyProduct: React.FC<BeautyProductProps> = ({ setCartCount }) => {
+  const [slideImg, setSlideImg] = useState<number>(1);
   const [cartItems, setCartItems] = useState<ProductItem[]>([]);
 
   useEffect(() => {
@@ -86,4 +90,6 @@ export default function BeautyProduct({ setCartCount }: { setCartCount: React.Di
       <Footer />
     </>
   );
-}
+};
+
+export default BeautyProduct;

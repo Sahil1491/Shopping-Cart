@@ -18,16 +18,20 @@ interface ProductItem {
   image: string;
 }
 
-export default function Fashion({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAction<number>> }) {
+interface FashionProps {
+  setCartCount: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Fashion: React.FC<FashionProps> = ({ setCartCount }) => {
   const [slideImg, setSlideImg] = useState(1);
   const [cartItems, setCartItems] = useState<ProductItem[]>([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSlideImg((prevSlide) => (prevSlide % 4) + 1); // Cycle through slides 1 to 4
+      setSlideImg((prevSlide) => (prevSlide % 4) + 1); 
     }, 3000);
 
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
+    return () => clearInterval(interval); 
   }, []);
 
   useEffect(() => {
@@ -38,7 +42,7 @@ export default function Fashion({ setCartCount }: { setCartCount: React.Dispatch
   }, []);
 
   const addToCart = (productName: string, price: number, image: string) => {
-    const newCartItem = { name: productName, price, image };
+    const newCartItem: ProductItem = { name: productName, price, image };
     const updatedCartItems = [...cartItems, newCartItem];
     setCartItems(updatedCartItems);
     setCartCount((prevCount) => prevCount + 1);
@@ -101,7 +105,9 @@ export default function Fashion({ setCartCount }: { setCartCount: React.Dispatch
           <button className="addToCartButton" onClick={() => addToCart('Watch 3', 120, watch3)}>Add to Cart</button>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }
+
+export default Fashion;

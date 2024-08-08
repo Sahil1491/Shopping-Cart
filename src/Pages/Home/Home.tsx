@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './Home.css';
 import img1 from '../../Components/Assests/Shopping.avif';
 import Iphone13 from '../../Components/Assests/Iphone13.jpeg';
@@ -18,7 +16,11 @@ interface ProductItem {
   image: string;
 }
 
-function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAction<number>> }) {
+interface HomeProps {
+  setCartCount: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Home: React.FC<HomeProps> = ({ setCartCount }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [cartItems, setCartItems] = useState<ProductItem[]>([]);
   const images = [img1, Slide4, LaptopImg, Slide2];
@@ -31,14 +33,11 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
     return () => clearInterval(interval);
   }, [images.length]);
 
-  
-
   const addToCart = (productName: string, price: number, image: string) => {
     setCartCount((prevCount) => prevCount + 1);
-    setCartItems((prevItems) => [...prevItems, { name: productName, price, image }]);
-    saveItemsToLocalStorage([...cartItems, { name: productName, price, image }]);
-   
- 
+    const newCartItems = [...cartItems, { name: productName, price, image }];
+    setCartItems(newCartItems);
+    saveItemsToLocalStorage(newCartItems);
   };
 
   const saveItemsToLocalStorage = (items: ProductItem[]) => {
@@ -52,11 +51,8 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
     }
   }, []);
 
-
-
   return (
     <>
-      <ToastContainer />
       <div className="HeadContent">
         <img className="MainImg" src={images[currentImageIndex]} alt="Shopping" />
       </div>
@@ -99,9 +95,8 @@ function Home({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAct
         </div>
       </div>
       <Footer />
-    
     </>
   );
-}
+};
 
 export default Home;

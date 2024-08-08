@@ -16,7 +16,11 @@ interface ProductItem {
   image: string;
 }
 
-export default function Electronics({ setCartCount }: { setCartCount: React.Dispatch<React.SetStateAction<number>> }) {
+interface ElectronicsProps {
+  setCartCount: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Electronics: React.FC<ElectronicsProps> = ({ setCartCount }) => {
   const [slideImg, setSlideImg] = useState(1);
   const [cartItems, setCartItems] = useState<ProductItem[]>([]);
 
@@ -36,7 +40,7 @@ export default function Electronics({ setCartCount }: { setCartCount: React.Disp
   }, []);
 
   const addToCart = (productName: string, price: number, image: string) => {
-    const newCartItem = { name: productName, price, image };
+    const newCartItem: ProductItem = { name: productName, price, image };
     const updatedCartItems = [...cartItems, newCartItem];
     setCartItems(updatedCartItems);
     setCartCount((prevCount) => prevCount + 1);
@@ -87,3 +91,5 @@ export default function Electronics({ setCartCount }: { setCartCount: React.Disp
     </>
   );
 }
+
+export default Electronics;
