@@ -12,6 +12,7 @@ import Electronics from './Pages/Electronics/Electronics';
 import Contact from './Pages/AboutUs/AboutUs';
 import BeautyProduct from './Pages/BeautyProducts/BeautyProduct';
 
+
 function App() {
   const [cartCount, setCartCount] = useState(0);
 
