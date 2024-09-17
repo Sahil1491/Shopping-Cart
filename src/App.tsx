@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import Header from './Components/Header/Header';
@@ -25,6 +25,7 @@ function App() {
   }, []);
 
   return (
+    <BrowserRouter basename='"/Shopping-Cart'>
     <Router>
       <>
         <Header cartCount={cartCount}/>
@@ -41,6 +42,7 @@ function App() {
         <ToastContainer/>
       </>
     </Router>
+    </BrowserRouter>
   );
 }
 
